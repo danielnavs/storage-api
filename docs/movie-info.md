@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Descripcion general del proyecto
 Este proyecto consiste en una coleccion de peliculas e informacion
 relevante de estas. La finalidad es que el usuario pueda consultar e interactuar
@@ -254,8 +255,23 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
 |  Creacion y explicacion de mock-ups|   e1201c5529b6b655d48cf583eb92661f9b509f19
 =======
 § Autentication Module
+=======
+# Acerca de este proyecto
+>>>>>>> e08f905 (Actualizacion del documento md)
 
-Este proyecto se trata sobre una coleccion de peliculas e informacion 
+Este proyecto se trata sobre una coleccion de peliculas e informacion
 relevante de estas. La finalidad es que el usuario pueda consultar
 dicha informacion de sus peliculas preferidas.
+<<<<<<< HEAD
 >>>>>>> 0c2daf6 (Actualizacion del documento md)
+=======
+
+# Modo de uso
+
+
+| Path                  | Descripción |
+| --------------------- | ----------- |
+| /movie-info/store           |             |
+| /movie-info/<id>       |             |
+| /movie-info/           |             |
+>>>>>>> e08f905 (Actualizacion del documento md)
