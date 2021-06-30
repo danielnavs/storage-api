@@ -9,11 +9,20 @@ y en base a esto determinar si desea verla o no.
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
-| /movie-info/review           | Muestra la reseña de la pelicula          |
-| /movie-info/cast       | Muestra el elenco de la pelicula           |
-| /movie-info/related           | Muestra peliculas relacionadas             |
+|  /movie-info/movie           |   Muestra informacion basica de la pelicula          
+|   /movie-info/user    | Muestra datos del usuario         |
+| /movie-info/review          |  Muestra la reseña de la pelicula             |
 
 # Archivos Relacionados
 
 - `routes/movie-info.py`
 - `modules/movie-info.py`
+
+# Guia para articular un API JSON
+
+La estructura del proyecto se basa en las siguientes entidades:
+
+- Pelicula (titulo, genero, director, fecha_lanzamiento)
+- Sinopsis (pendiente)
+- Usuario (nombre, edad, id)
+- Resena (usuario_id, rate)
