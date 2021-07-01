@@ -1,0 +1,22 @@
+{
+  "name": "storage-api",
+  "version": "1.0.0",
+  "description": "This is a minimal _HTTP API_ (_work in progress_) that allows you\r to make use of _Google Cloud Storage_.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekiim/storage-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekiim/storage-api/issues"
+  },
+  "homepage": "https://github.com/ekiim/storage-api#readme"
+}
