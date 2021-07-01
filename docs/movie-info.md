@@ -26,3 +26,5 @@ La estructura del proyecto se basa en las siguientes entidades:
 - Sinopsis (pendiente)
 - Usuario (nombre, edad, id)
 - Resena (usuario_id, rate)
+
+# Pendiente
