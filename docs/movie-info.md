@@ -9,9 +9,13 @@ al respecto a manera de reseña.
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
-|  /movie-info/movie_id          |   Muestra informacion basica de la pelicula          
-|   /movie-info/user_id    | Muestra datos del usuario         |
-| /movie-info/movie_id/reseña          |  Muestra la reseña de la pelicula             |
+|  /movie-info/add|   Agregar una pelicula
+|  /movie-info/list         |   Muestra todas las peliculas existentes    
+|  /movie-info/movie_id         |   Muestra informacion basica de una pelicula
+|  /movie-info/movie_id/review/list          |  Muestra las reseñas de la pelicula
+|  /movie-info/user/add|   Agregar un usuario         
+|  /movie-info/user/list   | Muestra los usuarios        |
+|  /movie-info/movie_id/review/add|   Agregar una reseña
 
 # Archivos Relacionados
 
@@ -59,7 +63,7 @@ Pendiente
 ### Registro de pelicula
 ```
 {
-    "titulo": "Shrek 2",
+   "titulo": "Shrek 2",
    "genero": "Fantasia",
    "director": "Andrew Adamson"
    "fecha_de_lanzamiento": "1988-01-01"
@@ -71,4 +75,3 @@ Pendiente
 ```
 
 # Implementación de rutas para los recursos
-Pendiente
