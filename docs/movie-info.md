@@ -2,16 +2,16 @@
 
 Este proyecto se trata sobre una coleccion de peliculas e informacion
 relevante de estas. La finalidad es que el usuario pueda consultar e interactuar
-con dicha informacion de ciertas peliculas, de tal manera que pueda dar su opinion
+con dicha informacion, de tal manera que pueda dar su opinion
 al respecto a manera de reseña.
 
 # Modo de uso
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
-|  /movie-info/movie           |   Muestra informacion basica de la pelicula          
-|   /movie-info/user    | Muestra datos del usuario         |
-| /movie-info/review          |  Muestra la reseña de la pelicula             |
+|  /movie-info/movie/movie_id          |   Muestra informacion basica de la pelicula          
+|   /movie-info/user/user_id    | Muestra datos del usuario         |
+| /movie-info/movie/movie_id/reseña          |  Muestra la reseña de la pelicula             |
 
 # Archivos Relacionados
 
@@ -28,15 +28,15 @@ La estructura del proyecto se basa en las siguientes entidades:
 
 # Operaciones de Almacenamiento de datos
 
-### Operaciones de  Usuario
+### Operaciones de  Usuario :man:
 - Se solicita nombre y edad.
 - El ID se auto asigna al usuario.
 
-### Operaciones de Peliculas
+### Operaciones de Peliculas :clapper:
 - Se solicita el titulo de la pelicula, genero, director, fecha de lanzamiento y sinopsis.
 - El ID se auto asigna a la pelicula
 
-### Operaciones de Reseñas
+### Operaciones de Reseñas :page_facing_up:
 - Se solicita el ID del usuario, el ID de la pelicula, y la reseña.
 
 # Operaciones de consulta de datos
