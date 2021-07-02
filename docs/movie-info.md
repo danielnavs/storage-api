@@ -9,9 +9,9 @@ al respecto a manera de reseña.
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
-|  /movie-info/movie/movie_id          |   Muestra informacion basica de la pelicula          
-|   /movie-info/user/user_id    | Muestra datos del usuario         |
-| /movie-info/movie/movie_id/reseña          |  Muestra la reseña de la pelicula             |
+|  /movie-info/movie_id          |   Muestra informacion basica de la pelicula          
+|   /movie-info/user_id    | Muestra datos del usuario         |
+| /movie-info/movie_id/reseña          |  Muestra la reseña de la pelicula             |
 
 # Archivos Relacionados
 
