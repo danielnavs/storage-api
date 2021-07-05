@@ -42,15 +42,15 @@ La estructura del proyecto se basa en las siguientes entidades:
 # Operaciones de consulta de datos
 
 - Solicitar datos de una pelicula
--- Por ID
+  - Por ID
 - Solicitar datos de una reseña
--- Por ID
+  - Por ID
 - Lista de peliculas
--- Por ID
--- Todas
+  - Por ID
+  - Todas
 - Lista de reseñas
--- Por ID
--- Todas
+  - Por ID
+   - Todas
 
 # Estructuras de solicitud y respuesta
 
