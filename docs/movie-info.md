@@ -1,21 +1,21 @@
 # Acerca de este proyecto
 
-Este proyecto se trata sobre una coleccion de peliculas e informacion
+Este proyecto consiste en tener una coleccion de peliculas e informacion
 relevante de estas. La finalidad es que el usuario pueda consultar e interactuar
-con dicha informacion, de tal manera que pueda dar su opinion
-al respecto a manera de reseña.
+con dicha informacion, de tal manera que pueda dar su opinion al respecto
+ a manera de reseña.
 
-# Modo de uso
+# API
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
 |  /movie-info/add|   Agregar una pelicula
-|  /movie-info/list         |   Muestra todas las peliculas existentes    
-|  /movie-info/movie_id         |   Muestra informacion basica de una pelicula
-|  /movie-info/movie_id/review/list          |  Muestra las reseñas de la pelicula
-|  /movie-info/user/add|   Agregar un usuario         
-|  /movie-info/user/list   | Muestra los usuarios        |
-|  /movie-info/movie_id/review/add|   Agregar una reseña
+|  /movie-info/list         |   Listar peliculas    
+|  /movie-info/<movie_id>         |   Obtener informacion de pelicula por id
+|  /movie-info/<movie_id>          |  Actualizar informacion de pelicula por id
+|  /movie-info/<movie_id>/review |   Listar reseñas de pelicula por id de pelicula        
+|  /movie-info/<movie_id>/review   | Agregar una reseña a una pelicula con id    |
+|  /movie-info/<movie_id>/review/<review_id>|   Obtener detalle de reseña con id para pelicula con id
 
 # Archivos Relacionados
 
@@ -27,38 +27,21 @@ al respecto a manera de reseña.
 La estructura del proyecto se basa en las siguientes entidades:
 
 - Pelicula (id, titulo, genero, director, fecha_lanzamiento, sinopsis)
-- Usuario (id, nombre, edad)
-- Reseña (usuario_id, pelicula_id, rate)
+- Reseña (usuario_id, pelicula_id, puntuacion, comentario)
 
 # Operaciones de Almacenamiento de datos
-
-### Operaciones de  Usuario :man:
-- Se solicita nombre y edad.
-- El ID se auto asigna al usuario.
 
 ### Operaciones de Peliculas :clapper:
 - Se solicita el titulo de la pelicula, genero, director, fecha de lanzamiento y sinopsis.
 - El ID se auto asigna a la pelicula
 
 ### Operaciones de Reseñas :page_facing_up:
-- Se solicita el ID del usuario, el ID de la pelicula, y la reseña.
+- Se solicita el ID del usuario, el ID de la pelicula, la puntuacion y la reseña.
 
 # Operaciones de consulta de datos
 Pendiente
 
 # Estructuras de solicitud y respuesta
-### Registro de usuario
-```
-{
-    "nombre": "Javier Hernandez",
-    "fecha_de_nacimiento": "1988-01-01"
-}
-
-```
-### Respuesta de registro de usuario exitoso
-```
-{ "id": "0001" }
-```
 
 ### Registro de pelicula
 ```
@@ -75,3 +58,25 @@ Pendiente
 ```
 
 # Implementación de rutas para los recursos
+```
+POST /movie-info/add
+```
+- Pendiente
+```
+GET/movie-info/list
+```
+```
+GET/movie-info/<movie_id>
+```
+```
+POST /movie-info/<movie_id>
+```
+```
+GET /movie-info/<movie_id>/review
+```
+```
+POST /movie-info/add
+```
+```
+GET/movie-info/<movie_id>/review/<review_id>
+```
