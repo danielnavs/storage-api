@@ -111,3 +111,27 @@ GET/movie-info/<movie_id>/review/<review_id>
 ```
 - 200, regresa una reseña en especifico, de una pelicula.
 - D.O.M, regresa mensaje de fallo.
+
+# Descripcion general del proyecto
+Este proyecto consiste en tener una coleccion de peliculas e informacion
+relevante de estas. La finalidad es que el usuario pueda consultar e interactuar
+con dicha informacion, de tal manera que pueda dar su opinion sobre la pelicula
+a manera de reseña.
+
+### Sector
+Este proyecto esta pensado para generar una interaccion entre los amantes de las
+peliculas [pendiente..]
+
+### Modelado de datos
+
+### Interacciones de datos
+
+### Consultas de datos
+
+### Operaciones de datos
+
+### Rutas HTTP
+
+### Ejemplos de mensajes HTTP que aceptara y emitira el servidor
+
+### Ejemplos de interacciones con el servidor
