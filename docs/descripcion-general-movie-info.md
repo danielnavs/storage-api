@@ -44,11 +44,11 @@ El usuario puede interactuar con los datos del servidor de diferentes maneras:
 
 - Al querer registrar reseñas, el usuario debe tener en cuenta que peliculas estan disponibles para poder interactuar. Para ello, puede consultar en el servidor la **lista completa de las peliculas** existentes.
 - El usuario, ya con conocimiento de las peliculas existentes, puede **extraer informacion detallada** de una **pelicula** en especifico.
+- Los usuarios pueden **escribir una reseña** sobre la pelicula de su eleccion.
 - Si lo desea, un usuario puede **consultar todas las reseñas** que hayan hecho otros usuarios sobre una pelicula en especifico.
- 
 
 ### Rutas HTTP
-A continuacion, se presentan las rutas HTTP
+A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
@@ -62,6 +62,48 @@ A continuacion, se presentan las rutas HTTP
 
 ### Ejemplos de mensajes HTTP que aceptara y emitira el servidor
 
+#### Registro de pelicula
+```
+{
+   "titulo": "Shrek 2",
+   "genero": "Fantasia",
+   "director": "Andrew Adamson",
+   "fecha_de_lanzamiento": "1988-01-01",
+   "sinopsis": "Shrek, Burro y la Princesa Fiona se enfrentan a toda una divertida serie de nuevas aventuras en las que aparecen personajes clásicos de cuentos de hadas."
+}
+```
+- Respuesta de registro de pelicula exitoso
+```
+{ "id": "P001" }
+```
+-  Mensaje de fallo
+```
+{
+	"code": "500",
+	"message": "An error has occurred"
+}
+```
+
+#### Registro de reseña
+```
+{
+   "user_id": "U001",
+   "movie_id": "P001",
+   "rate": "4/5"
+   "comment": "Me agrada la pelicula y el desenlace de los personajes."
+}
+```
+- Respuesta de registro de reseña exitoso
+```
+{ "id": "R001" }
+```
+-  Mensaje de fallo
+```
+{
+	"code": "500",
+	"message": "An error has occurred"
+}
+```
 ### Ejemplos de interacciones con el servidor
 ```
 POST /movie-info/add
@@ -101,6 +143,10 @@ GET /movie-info/<movie_id>/review/<review_id>
 - D.O.M, regresa mensaje de fallo.
 
 ### Autenticacion y autorizacion de usuarios
+Los usuarios estan autorizados a consultar y leer toda la informacion respecto a las peliculas y resenas ajenas. Sin embargo, no esta permitido que las editen.
+
+- Leer todo, editar solo las reseñas propias.
+`('app:reviews:read:all', 'app:reviews:write:self)`
 
 # Documento de plan de implementacion
 ## Aspecto General
