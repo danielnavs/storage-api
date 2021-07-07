@@ -111,11 +111,19 @@ POST /movie-info/add
 - Recibe una estructura de registro de pelicula.
 - 201, registrar una pelicula regresa estructura de id para la nueva pelicula.
 - D.O.M, regresa mensaje de fallo.
+- curl [http://localhost:8080/storage/json](http://localhost:8080/storage/json "http://localhost:8080/movie-info/json") -X POST -H "Content-Type: application/json" --data '{​​​​​​​"titulo": "Shrek 2",
+   "genero": "Fantasia",
+   "director": "Andrew Adamson",
+   "fecha_de_lanzamiento": "1988-01-01",
+   "sinopsis": "ejemplo"}​​​​​​​'
 ```
 GET /movie-info/list
 ```
 - 200, regresa una lista de peliculas.
 - D.O.M, regresa mensaje de fallo en formato json.
+- curl [http://localhost:8080/storage/json](http://localhost:8080/storage/json "http://localhost:8080/storage/json") -X POST -H "Content-Type: application/json" --data '{​​​​​​​"foo": "bar"}​​​​​​​'
+
+Message #computo-en-la-nube
 ```
 GET /movie-info/<movie_id>
 ```
@@ -161,7 +169,25 @@ Al concluir y desplegar este proyecto, se realizaran pruebas de funcionamiento y
 
 ### Aspecto Tecnico
 
-Pendiente
+#### Modulos de codigo necesarios
+
+- Rutas
+- Funciones
+
+#### Metodos de almacenamiento requeridos
+
+- Almacenamiento de archivos locales
+
+#### Plan para la codificacion de los modulos
+
+En que orden se van a programar. PENDIENTE
+
+Una serie de pasos que podamos romper en pasos mas pequeños e independientes, para lograr delegar o trabajar en ellos de manera secuencial.
+
+#### Plan para la verificacion de la  calidad del producto
+
+Pruebas manuales de los casos de uso del usuario y automatizados
+que se necesita para verificar la calidad
 
 # Evaluacion - Computo en la nube
 1. Crear un fork del proyecto storage-api
@@ -175,10 +201,8 @@ Pendiente
 
 | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
-|  Creacion de |   
-|  Creacion de |   
-|  Creacion de |   
-|  Creacion de |   
+|  Creacion de docs/movie-info.md|   a56280933431fd3254f2d220a0b98fdcb7479dd2
+|  Creacion de: modules/movie-info.py routes/movie-info.py models/movie-info.py|   ce38e60ec25bb8e3129b9ff5ebc94d9e33b9c28e
 
 3. Crear todas las rutas especificadas en su archivo de documentación dentro de su archivo en la carpeta routes, y todas deben de responder 501, con Content-Type: application/json, y un cuerpo de respuesta en formato json con 2 llaves, code y message, el message debe contener el mensaje, Not Implemented.
  **Señalar el commit-hash que contiene la codificacion de las rutas.**
