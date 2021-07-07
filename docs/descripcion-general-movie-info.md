@@ -79,8 +79,8 @@ A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 -  Mensaje de fallo
 ```
 {
-	"code": "500",
-	"message": "An error has occurred"
+   "code": "500",
+   "message": "An error has occurred"
 }
 ```
 
@@ -100,8 +100,8 @@ A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 -  Mensaje de fallo
 ```
 {
-	"code": "500",
-	"message": "An error has occurred"
+   "code": "500",
+   "message": "An error has occurred"
 }
 ```
 ### Ejemplos de interacciones con el servidor
@@ -149,5 +149,57 @@ Los usuarios estan autorizados a consultar y leer toda la informacion respecto a
 `('app:reviews:read:all', 'app:reviews:write:self)`
 
 # Documento de plan de implementacion
-## Aspecto General
-## Aspecto Tecnico
+### Aspecto General
+Este proyecto esta pensado para ayudar a los amantes del cine a encontrar nuevas peliculas de las cuales disfrutar, basandose en las resenas que otras personas han puesto sobre estas.
+
+Este proyecto es un proceso de mejora continua ya que todos los usuarios dependen de todos, teniendo en cuenta que cada uno puede aportar algo significativo al post analisis de una pelicula.
+Lo que me motivo a realizar este proyecto fue la satisfaccion de poder generar una comunidad amante del cine dispuesta a cooperar mutuamente para el desarrollo del mismo.
+
+Los recursos que se necesitan para trabajar este proyecto son los desarrolladores involucrados en el desarrollo del sistema. Los usuarios una parte fundamental tambien, ya que sin ellos no funcionaria de la manera correcta. En cuanto a recursos de computo es necesario contar con las herramientas necesarias, las cuales abarcan desde computadoras hasta conocimientos de programacion e implementacion de sistemas en servicios de nube, por mencionar alguno, Google Cloud.
+
+Al concluir y desplegar este proyecto, se realizaran pruebas de funcionamiento y en base a estas se determinara si se necesitan ajustes en el mismo.
+
+### Aspecto Tecnico
+
+Pendiente
+
+# Evaluacion - Computo en la nube
+1. Crear un fork del proyecto storage-api
+**Señalar cual es el commit-hash a partir de haber realizado el fork**
+
+| Concepto                 | Commit Hash|
+| --------------------- | ----------- |
+|  Creacion de Fork|   a56280933431fd3254f2d220a0b98fdcb7479dd2
+
+2. Crear los archivos correspondientes a su proyecto, y someterlos a control de versiones.  **Señalar el commit-hash que contiene la creación de dichos archivos.**
+
+| Concepto                 | Commit Hash|
+| --------------------- | ----------- |
+|  Creacion de |   
+|  Creacion de |   
+|  Creacion de |   
+|  Creacion de |   
+
+3. Crear todas las rutas especificadas en su archivo de documentación dentro de su archivo en la carpeta routes, y todas deben de responder 501, con Content-Type: application/json, y un cuerpo de respuesta en formato json con 2 llaves, code y message, el message debe contener el mensaje, Not Implemented.
+ **Señalar el commit-hash que contiene la codificacion de las rutas.**
+
+ | Concepto                 | Commit Hash|
+| --------------------- | ----------- |
+|  Creacion de |   
+
+4. Crear en su carpeta de modulos funciones que emulen las interacciones con el almacén de archivos o datos, es decir que si necesitas una función de consulta, crear una función que retorne una consulta simulada con datos codificados como constantes, y si necesitas crear objetos funciones que retornen simulando una creación exitosa.
+**Señalar el commit-hash que contiene la codificacion de estas funciones asistentes.**
+
+ | Concepto                 | Commit Hash|
+| --------------------- | ----------- |
+|  Creacion de |   
+
+
+5. Crear mock ups, de las vistas que desean implementar, utilizando MoqUps (conectar a su google drive).
+– Una vez concluidas las propuestas de vistas exportar a imagen, e incluir en el documento una explicacion de los datos expresados en las vistas emparejandolos con que endpoints contienen dicha informacion o a cual endpoint de su proyecto, estos activan.
+– Las imagenes deberan ser nombradas como ./docs/assets/--.png
+**Señalar el commit-hash que contiene la inclusión de estas descripciones al documento, junto con los commits que contienen las imagenes.**
+
+ | Concepto                 | Commit Hash|
+| --------------------- | ----------- |
+|  Creacion de |   
