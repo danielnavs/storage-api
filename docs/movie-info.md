@@ -237,5 +237,5 @@ La imagen **docs/assets/movie-info-0001-review_page.png** muestra un formulario 
 
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
-|  Creacion de imagenes|   31fff28feffba29837124781a35b2992e5404bc5
-|  Creacion de descripciones|   
+|  Creacion de mock-ups|   31fff28feffba29837124781a35b2992e5404bc5
+|  Explicaciones de mock-ups|   3e2703191d47e508a87c0b2f856a2ac161ac33bb
