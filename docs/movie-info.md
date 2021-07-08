@@ -180,7 +180,7 @@ Las rutas son una pieza fundamental del proyecto, ya que estas brindan una estru
 Las funciones de almacenamiento son necesarias para poder establecer donde se va a guardar toda la informacion obtenida.
 
 - Modulos de funcionalidades del API
-Ejemplo: para agregar peliculas o reseñas.
+Ejemplo: para agregar/listar peliculas o reseñas.
 
 #### Metodos de almacenamiento requeridos
 
@@ -221,7 +221,7 @@ Al finalizar el proyecto se realizaran pruebas para verificar el correcto funcio
 
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
-|  Creacion de |   
+|  Creacion de funciones |   e85e432504cbb880143be4fa06a20254b782a03a
 
 
 5. Crear mock ups, de las vistas que desean implementar, utilizando MoqUps (conectar a su google drive).
@@ -229,6 +229,13 @@ Al finalizar el proyecto se realizaran pruebas para verificar el correcto funcio
 – Las imagenes deberan ser nombradas como ./docs/assets/--.png
 **Señalar el commit-hash que contiene la inclusión de estas descripciones al documento, junto con los commits que contienen las imagenes.**
 
+### Explicacion de mock-ups
+La imagen **docs/assets/movie-info-0002-add_movie_page.png** muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
+
+La imagen **docs/assets/movie-info-0001-review_page.png** muestra un formulario donde el usuario puede registrar una reseña en la pelicula de su eleccion. Se le solicita una calificacion y un comentario respecto a la pelicula. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
+
+
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
-|  Creacion de |   
+|  Creacion de imagenes|   31fff28feffba29837124781a35b2992e5404bc5
+|  Creacion de descripciones|   
