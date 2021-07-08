@@ -28,11 +28,11 @@ def add_review(user_id, movie_id, rate, comment):
         "rate": rate,
         "comment": comment
     }
-    reviews.append(movie)
-    return json.dumps(movie)
+    reviews.append(review)
+    return json.dumps(reviews)
 
 def get_movies_list()
     return print(movies)
 
 def get_reviews_list()
-    return print(movies)
+    return print(reviews)
