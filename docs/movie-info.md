@@ -158,6 +158,9 @@ Los usuarios estan autorizados a consultar y leer toda la informacion respecto a
 - Leer todo, editar solo las reseñas propias.
 `('app:reviews:read:all', 'app:reviews:write:self)`
 
+- Leer todo, no se permite editar la informacion de las peliculas.
+`('app:movies:read:all', 'app:movies:write:none)`
+
 # Documento de plan de implementacion
 ### Aspecto General
 Este proyecto esta pensado para ayudar a los amantes del cine a encontrar nuevas peliculas de las cuales disfrutar, basandose en las reseñas que otras personas han puesto sobre estas.
@@ -230,10 +233,17 @@ Al finalizar el proyecto se realizaran pruebas para verificar el correcto funcio
 **Señalar el commit-hash que contiene la inclusión de estas descripciones al documento, junto con los commits que contienen las imagenes.**
 
 ### Explicacion de mock-ups
-La imagen **docs/assets/movie-info-0002-add_movie_page.png** muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
+![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0001-review_page.png)
 La imagen **docs/assets/movie-info-0001-review_page.png** muestra un formulario donde el usuario puede registrar una reseña en la pelicula de su eleccion. Se le solicita una calificacion y un comentario respecto a la pelicula. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
+![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0002-add_movie_page.png)
+La imagen **docs/assets/movie-info-0002-add_movie_page.png** muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
+
+![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0003-movies_list)
+La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas las peliculas existentes seguido de dos opciones:
+- Ver informacion. Proporciona la informacion de cada pelicula, independientemente.
+- Agregar reseña. Funcion para agregar una reseña a una pelicula.
 
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
