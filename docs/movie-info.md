@@ -235,17 +235,19 @@ Al finalizar el proyecto se realizaran pruebas para verificar el correcto funcio
 ### Explicacion de mock-ups
 
 ![Login](https://github.com/danielnavs/storage-api/raw/master/docs/assets/movie-info-0001-review_page.PNG)
+
 La imagen **docs/assets/movie-info-0001-review_page.png** muestra un formulario donde el usuario puede registrar una reseña en la pelicula de su eleccion. Se le solicita una calificacion y un comentario respecto a la pelicula. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
 ![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0002-add_movie_page.PNG)
+
 La imagen **docs/assets/movie-info-0002-add_movie_page.png** muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
 ![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0003-movies_list.PNG)
+
 La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas las peliculas existentes seguido de dos opciones:
 - Ver informacion. Proporciona la informacion de cada pelicula, independientemente.
 - Agregar reseña. Funcion para agregar una reseña a una pelicula.
 
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
-|  Creacion de mock-ups|   31fff28feffba29837124781a35b2992e5404bc5
-|  Explicaciones de mock-ups|   3e2703191d47e508a87c0b2f856a2ac161ac33bb
+|  Creacion y explicacion de mock-ups|   e1201c5529b6b655d48cf583eb92661f9b509f19
