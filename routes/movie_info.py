@@ -1,57 +1,69 @@
-from json import dumps as json_dumps
-from os import environ
 import bottle
-from modules.cors import enable_cors
-import modules.utils as utils
-from modules.auth import auth_required
+from modules.bottles import BottleJson
 
-app = bottle.Bottle()
+app = BottleJson()
+
+@app.get("/")
+def store_record(*args, **kwargs):
+    return dict(code= 501, message = "Not implemented")
 
 ## Add a movie
-@app.post("/movie-info/add")
+@app.post("/movie_info/add")
 def add_a_movie(*args, **kwargs):
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
-    return dict(code=501, message="Not implemented")
+    return dict(code=501, message="Not implemented hah")
 
 ## Get movies list
-@app.get("/movie-info/list")
+@app.get("/movie_info/list")
 def get_movies_list(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")
 
 ## Get movie details
-@app.get("/movie-info/<movie_id>")
+@app.get("/movie_info/<movie_id>")
 def get_movie_details(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")
 
 ## Update movie details
-@app.post("/movie-info/<movie_id>")
+@app.post("/movie_info/<movie_id>")
 def update_movie_details(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")
 
 ## Get all reviews from a movie
-@app.get("/movie-info/<movie_id>/review")
+@app.get("/movie_info/<movie_id>/review")
 def get_all_movie_reviews(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")
 
 ## Add a review to a certain movie
-@app.post("/movie-info/<movie_id>/review")
+@app.post("/movie_info/<movie_id>/review")
 def add_a_review(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")
 
 ## Get a certain review from a certain movie
-@app.get("/movie-info/<movie_id>/review/<review_id>")
+@app.get("/movie_info/<movie_id>/review/<review_id>")
 def get_review_from_movie(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented")

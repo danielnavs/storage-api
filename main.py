@@ -5,19 +5,23 @@ bottle.py and intended to be used as a Google Cloud Run
 service.
 
 """
-
 import sys
 import datetime
 import bottle
 import routes.auth
 import routes.storage
 import models.base
+import routes.movie_info
 
 app = bottle.Bottle()
 
 app.mount("/auth", routes.auth.app)
 app.mount("/storage", routes.storage.app)
-
+app.mount("/movie_info/add", routes.movie_info.app)
+app.mount("/movie_info/list", routes.movie_info.app)
+app.mount("/movie_info/<movie_id>", routes.movie_info.app)
+app.mount("/movie_info/<movie_id>/review", routes.movie_info.app)
+app.mount("/movie_info/<movie_id>/review/<review_id>", routes.movie_info.app)
 
 @app.get("/")
 def root_index(*args, **kwargs):
