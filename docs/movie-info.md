@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f540cb967b3261e00f407b61d1568721b8f2a36d
 # Descripcion general del proyecto
 Este proyecto consiste en una coleccion de peliculas e informacion
 relevante de estas. La finalidad es que el usuario pueda consultar e interactuar
