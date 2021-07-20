@@ -10,6 +10,8 @@ def store_record(*args, **kwargs):
 ## Add a movie
 @app.post("/movie_info/add")
 def add_a_movie(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
     return dict(code=501, message="Not implemented hah")
