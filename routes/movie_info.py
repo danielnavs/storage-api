@@ -1,29 +1,56 @@
+import json
+from time import time
+import bottle
+from modules.bottles import BottleJson
+from modules.auth import auth_required
+from modules.storage import store_string, get_storage_file
+from models.example import ExampleRecord
+
 import bottle
 from modules.bottles import BottleJson
 
 app = BottleJson()
 
 @app.get("/")
-def store_record(*args, **kwargs):
+def index():
+    payload = bottle.request.query
+    print(bottle.request.query)
+    print(payload.dict)
+    raise bottle.HTTPError(501, 'Error')
+"""
+@app.get("/")
+def index(*args, **kwargs):
     return dict(code= 501, message = "Not implemented")
-
+"""
 ## Add a movie
 @app.post("/movie_info/add")
 def add_a_movie(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
-    bottle.response.status = 501
-    bottle.response.content_type = "application/json"
-    return dict(code=501, message="Not implemented hah")
+    payload = bottle.request.query
+    print(payload.dict)
+    #bottle.response.status = 501
+    #bottle.response.content_type = "application/json"
+    #return dict(code=501, message="Not implemented hah")
 
+
+"""
 ## Get movies list
 @app.get("/movie_info/list")
 def get_movies_list(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
+    payload = bottle.request.query
+    #print(payload)
     bottle.response.status = 501
     bottle.response.content_type = "application/json"
-    return dict(code=501, message="Not implemented")
+    #return dict(code=501, message="Not implemented")
+    return dict(payload)
+
+"""
+##test
+@app.get("/movie_info/list")
+def index():
+    payload = bottle.request.query
+    print(bottle.request.query)
+    print(payload.dict)
+    raise bottle.HTTPError(501, 'Error')
 
 ## Get movie details
 @app.get("/movie_info/<movie_id>")
