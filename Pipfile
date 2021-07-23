@@ -20,3 +20,4 @@ python_version = "3.9"
 [scripts]
 start = "python main.py"
 migrate = "python main.py db migrate"
+
