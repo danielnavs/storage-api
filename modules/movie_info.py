@@ -7,9 +7,6 @@ from bottle import response, request
 import jwt
 import models.auth as mauth
 
-
-movies= {}
-
 def add_movie(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
     """
@@ -32,10 +29,25 @@ def add_movie(title = None, genre2 = None, director = None, release_date = None,
     print(title, genre2, director, release_date, sinopsys)
     print("Exito")
 
-reviews = {}
+def get_movies_list(movies=None):
+    print("Desde modulo movie_info.py")
+    print(movies)
+    print("Exito")
 
+def get_movie_details(movie_id=None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
+    print("Desde modulo movie_info.py")
+    print(movie_id, title, genre2, director, release_date, sinopsys)
+    print("Exito")
 
-#aqui se recibe una consulta de ..... (rutas)
+def update_movie_details(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
+    print("Desde modulo movie_info.py")
+    print(title, genre2, director, release_date, sinopsys)
+    print("Exito")
+
+def get_reviews_from_movie(movie_id = None, reviews = None):
+    print("Desde modulo movie_info.py")
+    print(movie_id, reviews)
+    print("Exito")
 
 def add_review(user_id = None, movie_id = None, rate = None, comment = None):
     """
@@ -49,15 +61,10 @@ def add_review(user_id = None, movie_id = None, rate = None, comment = None):
     return json.dumps(reviews)
     """
     print("Desde modulo movie_info.py")
-    print(movie_id, rate , comment)
+    print(user_id, movie_id, rate , comment)
     print("Exito")
 
-
-
-"""
-def get_movies_list()
-    print(movies)
-
-def get_reviews_list()
-    print(reviews)
-"""
+def get_review_from_certain_movie(movie_id = None, review_id = None):
+    print("Desde modulo movie_info.py")
+    print(movie_id, reviews)
+    print("Exito")
