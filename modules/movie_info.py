@@ -8,17 +8,13 @@ import jwt
 import models.auth as mauth
 
 
-
 movies= {}
 
+def add_movie(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
-def add_movie(movie_id, title, genre, director, release_date, sinopsys):
-    
     """
     Esta funcion recibe los parametros necesarios para agregar
     una pelicula al sistema.
-
-    """
 
     movie = {
         "movie_id": movie_id,
@@ -30,13 +26,19 @@ def add_movie(movie_id, title, genre, director, release_date, sinopsys):
     }
     movies.append(movie)
     return json.dumps(movie)
+    """
+
+    print("Desde modulo movie_info.py")
+    print(title, genre2, director, release_date, sinopsys)
+    print("Exito")
 
 reviews = {}
 
 
-aqui se recibe una consulta de ..... (rutas)
+#aqui se recibe una consulta de ..... (rutas)
 
-def add_review(user_id, movie_id, rate, comment):
+def add_review(user_id = None, movie_id = None, rate = None, comment = None):
+    """
     review = {
         "user_id": user_id,
         "movie_id": movie_id,
@@ -45,9 +47,17 @@ def add_review(user_id, movie_id, rate, comment):
     }
     reviews.append(review)
     return json.dumps(reviews)
+    """
+    print("Desde modulo movie_info.py")
+    print(movie_id, rate , comment)
+    print("Exito")
 
+
+
+"""
 def get_movies_list()
-    return print(movies)
+    print(movies)
 
 def get_reviews_list()
-    return print(reviews)
+    print(reviews)
+"""
