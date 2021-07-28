@@ -110,22 +110,22 @@ def bar(*args, **kwargs):
 # Example curl:
 # curl "localhost:8080/movie_info/123/review?movie_id=123&rate=5&comment=good"
 @app.post("/movie_info/<movie_id>/review")
-def add_a_review(*args, **kwargs):
+def bar(*args, **kwargs):
     payload = bottle.request.query
     print(payload.dict)
     try:
         #review_id = str(payload['review_id'])
-        user_id = int(payload['user_id'])
-        movie_id = int(payload['movie_id'])
+        user_id = str(payload['user_id'])
+        movie_id = str(payload['movie_id'])
         rate = str(payload['rate'])
         comment = str(payload['comment'])
         print("Datos validos")
         respuesta = add_review(**payload)
-        raise HTTPError(201)
+        raise bottle.HTTPError(201)
     except:
         print("Datos invalidos")
-        raise HTTPError(400)
-    raise HTTPError(500)
+        raise bottle.HTTPError(400)
+    raise bottle.HTTPError(500)
 
 ## Get a certain review from a certain movie
 @app.get("/movie_info/<movie_id>/review/<review_id>")

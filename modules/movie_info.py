@@ -61,7 +61,7 @@ def add_review(user_id = None, movie_id = None, rate = None, comment = None):
     return json.dumps(reviews)
     """
     print("Desde modulo movie_info.py")
-    print(user_id, movie_id, rate , comment)
+    print(user_id,  movie_id, rate , comment)
     print("Exito")
 
 def get_review_from_certain_movie(movie_id = None, review_id = None):
