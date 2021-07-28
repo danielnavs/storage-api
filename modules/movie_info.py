@@ -30,15 +30,29 @@ def add_movie(movie_id = None, title = None, genre2 = None, director = None, rel
     return datos
 
 def get_movies_list(movies=None):
-    print("Desde modulo movie_info.py")
-    print(movies)
-    print("Exito")
-
+    query_result = query_storage(
+        "movie/movies",
+    )
+    if movies is None:
+        return query_result["content"]
+"""
 def get_movie_details(movie_id=None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
     print("Desde modulo movie_info.py")
     print(movie_id, title, genre2, director, release_date, sinopsys)
     print("Exito")
+"""
 
+def get_movie_details(movie_id=None):
+    query_result = query_storage(
+        "movie/movies",
+    )
+    if movie_id is not None:
+        return [
+           r
+           for r in query_result["content"]
+           if movie_id in r
+        ]
+    print("Almost done perro")
 def update_movie_details(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
     #update = True

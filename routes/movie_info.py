@@ -18,7 +18,7 @@ app = BottleJson()
 
 ## Add a movie
 # Curl Example:
-# curl "localhost:8080/movie_info/add?title=shrek2&genre2=cartoon&director=elnava&release_date=2000-05-23&sinopsys=muylejanojajj"
+# curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "002","title": "Shrek3", "genre2": "Cartoon", "director": "elnava", "release_date": "1999-01-01", "sinopsys": "muylejanojaja"}'
 @app.post("/store")
 def store(*args, **kwargs):
     payload = bottle.request.json
@@ -40,34 +40,28 @@ def store(*args, **kwargs):
     raise bottle.HTTPError(201, respuesta)
 
 ## Get movies list
+## Curl example:
+# curl http://localhost:8080/movie/list -X GET
 @app.get("/list")
-def bar(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
+def get_all_movies(*args, **kwargs):
     try:
-        movies = str(payload['movies'])
-        print("Datos validos")
-        respuesta = get_movies_list(**payload)
-        raise bottle.HTTPError(201)
+       respuesta = get_movies_list()
     except:
-        print("Datos invalidos")
-        raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
+        raise bottle.HTTPError(500, "Error interno")
+    raise bottle.HTTPError(200, respuesta)
 
 ## Get movie details
+## Curl Example:
+# curl http://localhost:8080/movie/001 -X GET
 @app.get("/<movie_id>")
-def bar(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
+def get_movie_per_id(*args, movie_id=None, **kwargs):
     try:
-        movie_id = str(payload['movie_id'])
-        print("Datos validos")
-        respuesta = get_movie_details(**payload)
-        raise bottle.HTTPError(201)
+        respuesta = get_movie_details(movie_id = movie_id)
     except:
-        print("Datos invalidos")
         raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
+    raise bottle.HTTPError(200, respuesta)
+
+
 
 
 ## Update movie details
