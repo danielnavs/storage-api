@@ -1,19 +1,17 @@
-import datetime
-import binascii
-from functools import wraps
-from os import environ, urandom
-import hashlib
+from datetime import datetime
 from bottle import response, request
-import jwt
-import models.auth as mauth
+from modules.storage import (
+    store_string, store_bytes,
+    query_storage, get_storage_file
+)
 
 def add_movie(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
-    """
-    Esta funcion recibe los parametros necesarios para agregar
-    una pelicula al sistema.
+    print("Desde Modulo store")
+    print(title, genre2, director, release_date, sinopsys)
+    print("Exito")
 
-    movie = {
+    almacenable = {
         "movie_id": movie_id,
         "title": title,
         "genre": genre,
@@ -21,9 +19,13 @@ def add_movie(title = None, genre2 = None, director = None, release_date = None,
         "release_date": release_date,
         "sinopsys": sinopsys
     }
-    movies.append(movie)
-    return json.dumps(movie)
-    """
+    nombre_de_archivo = f"{st}-{fecha}.json"
+    datos = store_string(
+        "movie_info/movies_registros",
+        nombre_de_archivo,
+        json.dumps(almacenable)
+    )
+    return datos
 
     print("Desde modulo movie_info.py")
     print(title, genre2, director, release_date, sinopsys)
