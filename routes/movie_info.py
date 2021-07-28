@@ -1,15 +1,15 @@
-""""
-import json
-from time import time
+import datetime as dt
 import bottle
 from modules.bottles import BottleJson
-from modules.auth import auth_required
-from modules.storage import store_string, get_storage_file
-from models.example import ExampleRecord
-"""
-import bottle
-from modules.bottles import BottleJson
-from modules.movie_info import add_movie, get_movies_list, get_movie_details, update_movie_details, get_reviews_from_movie, add_review, get_review_from_certain_movie
+from modules.movie_info import (
+    add_movie,
+    get_movies_list,
+    get_movie_details,
+    update_movie_details,
+    get_reviews_from_movie,
+    add_review,
+    get_review_from_certain_movie
+)
 
 app = BottleJson()
 
@@ -19,28 +19,28 @@ app = BottleJson()
 ## Add a movie
 # Curl Example:
 # curl "localhost:8080/movie_info/add?title=shrek2&genre2=cartoon&director=elnava&release_date=2000-05-23&sinopsys=muylejanojajj"
-@app.post("/movie_info/add")
-def bar(*args, **kwargs):
-    payload = bottle.request.query
-    print(payload.dict)
+@app.post("/store")
+def store(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     try:
-        #movie_id: int(payload['movie_id'])
-        title = str(payload['title'])
+        movie_id = str(payload['movie_id'])
+        title  = str(payload['title'])
         genre2 = str(payload['genre2'])
         director = str(payload['director'])
-        release_date = str(payload['release_date'])
-        year, month, date = [int(x) for x in release_date.split("-")]
+        release_date = dt.date.fromisoformat(payload['release_date'])
         sinopsys= str(payload['sinopsys'])
         print("Datos validos")
         respuesta = add_movie(**payload)
-        raise bottle.HTTPError(201)
+        print(respuesta)
+        print("Almost done")
     except:
         print("Datos invalidos")
-        raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
+        raise bottle.HTTPError(400, "Invalid data")
+    raise bottle.HTTPError(201, respuesta)
 
 ## Get movies list
-@app.get("/movie_info/list")
+@app.get("/list")
 def bar(*args, **kwargs):
     payload = bottle.request.json
     print(payload)
@@ -55,7 +55,7 @@ def bar(*args, **kwargs):
     raise bottle.HTTPError(500)
 
 ## Get movie details
-@app.get("/movie_info/<movie_id>")
+@app.get("/<movie_id>")
 def bar(*args, **kwargs):
     payload = bottle.request.json
     print(payload)
@@ -71,7 +71,7 @@ def bar(*args, **kwargs):
 
 
 ## Update movie details
-@app.post("/movie_info/<movie_id>")
+@app.post("/<movie_id>")
 def bar(*args, **kwargs):
     payload = bottle.request.query
     print(payload.dict)
@@ -91,7 +91,7 @@ def bar(*args, **kwargs):
     raise bottle.HTTPError(500)
 
 ## Get all reviews from a movie
-@app.get("/movie_info/<movie_id>/review")
+@app.get("/<movie_id>/review")
 def bar(*args, **kwargs):
     payload = bottle.request.json
     print(payload)
@@ -109,7 +109,7 @@ def bar(*args, **kwargs):
 ## Add a review to a certain movie
 # Example curl:
 # curl "localhost:8080/movie_info/123/review?movie_id=123&rate=5&comment=good"
-@app.post("/movie_info/<movie_id>/review")
+@app.post("/<movie_id>/review")
 def bar(*args, **kwargs):
     payload = bottle.request.query
     print(payload.dict)
@@ -128,7 +128,7 @@ def bar(*args, **kwargs):
     raise bottle.HTTPError(500)
 
 ## Get a certain review from a certain movie
-@app.get("/movie_info/<movie_id>/review/<review_id>")
+@app.get("/<movie_id>/review/<review_id>")
 def bar(*args, **kwargs):
     payload = bottle.request.json
     print(payload)

@@ -17,16 +17,17 @@ app = bottle.Bottle()
 
 app.mount("/auth", routes.auth.app)
 app.mount("/storage", routes.storage.app)
-app.mount("/movie_info/add", routes.movie_info.app)
-app.mount("/movie_info/list", routes.movie_info.app)
-app.mount("/movie_info/<movie_id>", routes.movie_info.app)
-app.mount("/movie_info/<movie_id>/review", routes.movie_info.app)
-app.mount("/movie_info/<movie_id>/review/<review_id>", routes.movie_info.app)
+app.mount("/store", routes.movie_info.app)
+app.mount("/movie", routes.movie_info.app)
+#app.mount("/list", routes.movie_info.app)
+
+#app.mount("/<movie_id>", routes.movie_info.app)
+#app.mount("/<movie_id>/review", routes.movie_info.app)
+#app.mount("/<movie_id>/review/<review_id>", routes.movie_info.app)
 
 @app.get("/")
 def root_index(*args, **kwargs):
     return dict(code=200)
-
 
 if __name__ == '__main__':
     error = False

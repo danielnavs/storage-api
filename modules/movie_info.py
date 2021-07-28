@@ -1,35 +1,33 @@
+import json
 from datetime import datetime
-from bottle import response, request
 from modules.storage import (
-    store_string, store_bytes,
-    query_storage, get_storage_file
+    store_string,
+    store_bytes,
+    query_storage,
+    get_storage_file
 )
 
-def add_movie(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
+def add_movie(movie_id = None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
     print("Desde Modulo store")
-    print(title, genre2, director, release_date, sinopsys)
+    print(movie_id, title, genre2, director, release_date, sinopsys)
     print("Exito")
 
     almacenable = {
         "movie_id": movie_id,
         "title": title,
-        "genre": genre,
+        "genre2": genre2,
         "director": director,
         "release_date": release_date,
-        "sinopsys": sinopsys
+        "sinopsys": sinopsys,
     }
-    nombre_de_archivo = f"{st}-{fecha}.json"
+    nombre_de_archivo = f"{title}-{movie_id}.json"
     datos = store_string(
-        "movie_info/movies_registros",
+        "movie/movies",
         nombre_de_archivo,
         json.dumps(almacenable)
     )
     return datos
-
-    print("Desde modulo movie_info.py")
-    print(title, genre2, director, release_date, sinopsys)
-    print("Exito")
 
 def get_movies_list(movies=None):
     print("Desde modulo movie_info.py")
@@ -42,6 +40,8 @@ def get_movie_details(movie_id=None, title = None, genre2 = None, director = Non
     print("Exito")
 
 def update_movie_details(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
+
+    #update = True
     print("Desde modulo movie_info.py")
     print(title, genre2, director, release_date, sinopsys)
     print("Exito")
