@@ -62,8 +62,6 @@ def get_movie_per_id(*args, movie_id=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 
-
-
 ## Update movie details
 @app.post("/<movie_id>")
 def bar(*args, **kwargs):
@@ -84,6 +82,27 @@ def bar(*args, **kwargs):
         raise bottle.HTTPError(400)
     raise bottle.HTTPError(500)
 
+## Add a review to a certain movie
+# Example curl:
+# curl http://localhost:8080/movie/007/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "002","user_id": "001", "movie_id": "007", "movie_title": "Inception", "rate": "5", "comment": "goooood bro ngl"}'
+@app.post("/<movie_id>/review")
+def bar(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
+    try:
+        review_id = str(payload['review_id'])
+        user_id = str(payload['user_id'])
+        movie_id = str(payload['movie_id'])
+        movie_title = str(payload['movie_title'])
+        rate = str(payload['rate'])
+        comment = str(payload['comment'])
+        print("Datos validos")
+        respuesta = add_review(**payload)
+    except:
+        print("Datos invalidos")
+        raise bottle.HTTPError(400)
+    raise bottle.HTTPError(201, "Your review has been succesfully added")
+
 ## Get all reviews from a movie
 @app.get("/<movie_id>/review")
 def bar(*args, **kwargs):
@@ -94,27 +113,6 @@ def bar(*args, **kwargs):
         reviews = str(payload['reviews'])
         print("Datos validos")
         respuesta = get_reviews_from_movie(**payload)
-        raise bottle.HTTPError(201)
-    except:
-        print("Datos invalidos")
-        raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
-
-## Add a review to a certain movie
-# Example curl:
-# curl "localhost:8080/movie_info/123/review?movie_id=123&rate=5&comment=good"
-@app.post("/<movie_id>/review")
-def bar(*args, **kwargs):
-    payload = bottle.request.query
-    print(payload.dict)
-    try:
-        #review_id = str(payload['review_id'])
-        user_id = str(payload['user_id'])
-        movie_id = str(payload['movie_id'])
-        rate = str(payload['rate'])
-        comment = str(payload['comment'])
-        print("Datos validos")
-        respuesta = add_review(**payload)
         raise bottle.HTTPError(201)
     except:
         print("Datos invalidos")
