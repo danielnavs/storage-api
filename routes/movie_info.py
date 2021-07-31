@@ -115,10 +115,13 @@ def get_all_reviews_from_movie(*args, movie_id=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 ## Get a certain review from a certain movie
-@app.get("/<movie_id>/review/<review_id>")
+## Curl examples:
+# curl http://localhost:8080/movie/M002/reviews/R003 -X GET
+# curl http://localhost:8080/movie/M002/reviews/R002 -X GET
+@app.get("/<movie_id>/reviews/<review_id>")
 def get_specific_review_from_movie(*args, movie_id=None,  review_id=None, **kwargs):
     try:
-       respuesta = get_review_from_certain_movie(movie_id, review_id)
+       respuesta = get_review_from_certain_movie(review_id)
     except:
         raise bottle.HTTPError(500, "Error interno")
     raise bottle.HTTPError(200, respuesta)
