@@ -61,7 +61,6 @@ def get_movie_per_id(*args, movie_id=None, **kwargs):
         raise bottle.HTTPError(400)
     raise bottle.HTTPError(200, respuesta)
 
-
 ## Update movie details
 @app.post("/<movie_id>")
 def bar(*args, **kwargs):

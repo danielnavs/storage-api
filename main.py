@@ -10,12 +10,14 @@ import datetime
 import bottle
 import routes.auth
 import routes.storage
+import routes.example
 import models.base
 import routes.movie_info
 
 app = bottle.Bottle()
 
 app.mount("/auth", routes.auth.app)
+app.mount("/example", routes.example.app)
 app.mount("/storage", routes.storage.app)
 app.mount("/store", routes.movie_info.app)
 app.mount("/movie", routes.movie_info.app)
@@ -29,6 +31,15 @@ app.mount("/movie", routes.movie_info.app)
 def root_index(*args, **kwargs):
     return dict(code=200)
 
+<<<<<<< HEAD
+=======
+@app.get("/hello")
+@app.get("/hello/<name>")
+def root_index(*args, name="Mike", **kwargs):
+    return dict(code=200, hello="how-are-you") | {"from":name}
+
+
+>>>>>>> 7c205d3b455c24d48a96b01fac200d858da39a52
 if __name__ == '__main__':
     error = False
     if (argv_len := len(sys.argv)) > 1:
@@ -38,7 +49,8 @@ if __name__ == '__main__':
         if sys.argv[1] == 'db' and 'migrate' in sys.argv:
             print("Database Migration:")
             now_iso = datetime.datetime.utcnow().isoformat()
-            models.base.migrate_database(now_iso)
+            migration_name = now_iso
+            models.base.migrate_database(migration_name)
         else:
             error = True
     elif error:
