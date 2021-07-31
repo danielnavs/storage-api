@@ -21,7 +21,7 @@ def add_movie(movie_id = None, title = None, genre2 = None, director = None, rel
         "release_date": release_date,
         "sinopsys": sinopsys,
     }
-    nombre_de_archivo = f"{title}-{movie_id}.json"
+    nombre_de_archivo = f"{movie_id}-{title}.json"
     datos = store_string(
         "movie/movies",
         nombre_de_archivo,
@@ -55,27 +55,6 @@ def update_movie_details(title = None, genre2 = None, director = None, release_d
     print(title, genre2, director, release_date, sinopsys)
     print("Exito")
 
-def get_reviews_from_movie(movie_id = None, reviews = None):
-    print("Desde modulo movie_info.py")
-    print(movie_id, reviews)
-    print("Exito")
-"""
-def add_review(user_id = None, movie_id = None, rate = None, comment = None):
-
-    review = {
-        "user_id": user_id,
-        "movie_id": movie_id,
-        "rate": rate,
-        "comment": comment
-    }
-    reviews.append(review)
-    return json.dumps(reviews)
-
-    print("Desde modulo movie_info.py")
-    print(user_id,  movie_id, rate , comment)
-    print("Exito")
-"""
-
 def add_review(review_id = None, user_id = None, movie_id = None, movie_title = None, rate = None, comment = None):
 
     print("Desde Modulo add_review")
@@ -90,7 +69,7 @@ def add_review(review_id = None, user_id = None, movie_id = None, movie_title = 
         "rate": rate,
         "comment": comment,
     }
-    nombre_de_archivo = f"{review_id}-{movie_title}.json"
+    nombre_de_archivo = f"{movie_id}-{review_id}-{movie_title}.json"
     datos = store_string(
         "movie/reviews",
         nombre_de_archivo,
@@ -98,9 +77,27 @@ def add_review(review_id = None, user_id = None, movie_id = None, movie_title = 
     )
     return datos
 
+def get_reviews_from_movie(movie_id = None, reviews = None):
+    query_result = query_storage(
+        "movie/reviews",
+    )
+    if movie_id is not None:
+        return [
+           r
+           for r in query_result["content"]
+           if movie_id in r
+        ]
+    print("Done compita")
 
 
 def get_review_from_certain_movie(movie_id = None, review_id = None):
-    print("Desde modulo movie_info.py")
-    print(movie_id, reviews)
-    print("Exito")
+    query_result = query_storage(
+        "movie/reviews",
+    )
+    if movie_id is not None:
+        return [
+           r
+           for r in query_result["content"]
+           if movie_id in r
+        ]
+    print("Done compita")

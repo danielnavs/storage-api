@@ -90,9 +90,9 @@ def bar(*args, **kwargs):
     payload = bottle.request.json
     print(payload)
     try:
+        movie_id = str(payload['movie_id'])
         review_id = str(payload['review_id'])
         user_id = str(payload['user_id'])
-        movie_id = str(payload['movie_id'])
         movie_title = str(payload['movie_title'])
         rate = str(payload['rate'])
         comment = str(payload['comment'])
@@ -104,33 +104,21 @@ def bar(*args, **kwargs):
     raise bottle.HTTPError(201, "Your review has been succesfully added")
 
 ## Get all reviews from a movie
-@app.get("/<movie_id>/review")
-def bar(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
+## Curl example:
+# curl http://localhost:8080/movie/M001/reviews -X GET
+@app.get("/<movie_id>/reviews")
+def get_all_reviews_from_movie(*args, movie_id=None, **kwargs):
     try:
-        movie_id = str(payload['movie_id'])
-        reviews = str(payload['reviews'])
-        print("Datos validos")
-        respuesta = get_reviews_from_movie(**payload)
-        raise bottle.HTTPError(201)
+       respuesta = get_reviews_from_movie(movie_id)
     except:
-        print("Datos invalidos")
-        raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
+        raise bottle.HTTPError(500, "Error interno")
+    raise bottle.HTTPError(200, respuesta)
 
 ## Get a certain review from a certain movie
 @app.get("/<movie_id>/review/<review_id>")
-def bar(*args, **kwargs):
-    payload = bottle.request.json
-    print(payload)
+def get_specific_review_from_movie(*args, movie_id=None,  review_id=None, **kwargs):
     try:
-        movie_id = int(payload['movie_id'])
-        review_id = str(payload['user_id'])
-        print("Datos validos")
-        respuesta = get_review_from_certain_movie(**payload)
-        raise HTTPError(201)
+       respuesta = get_review_from_certain_movie(movie_id, review_id)
     except:
-        print("Datos invalidos")
-        raise HTTPError(400)
-    raise HTTPError(500)
+        raise bottle.HTTPError(500, "Error interno")
+    raise bottle.HTTPError(200, respuesta)
