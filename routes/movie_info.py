@@ -62,11 +62,18 @@ def get_movie_per_id(*args, movie_id=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 ## Update movie details
+## This works as a simple post. The store_string function
+## updates de info that was previously storaged.
+## Curl example to update the Soy Leyenda movie information
+## curl http://localhost:8080/movie/M002 -X POST -H /
+##'Content-Type: application/json' -d /
+##'{"movie_id": "M002","title": "Soy Leyenda", "genre2": "Accion", "director": "Francis Lawrence", "release_date": "2008-01-18", "sinopsys": "Un cientifico lucha por sobrevivir contra unos mutantes nocturnos con sed de sangre."}'
 @app.post("/<movie_id>")
-def bar(*args, **kwargs):
-    payload = bottle.request.query
-    print(payload.dict)
+def update_movie_data(*args, **kwargs):
+    payload = bottle.request.json
+    print(payload)
     try:
+        movie_id = str(payload['movie_id'])
         title = str(payload['title'])
         genre2 = str(payload['genre2'])
         director = str(payload['director'])
@@ -75,11 +82,12 @@ def bar(*args, **kwargs):
         sinopsys= str(payload['sinopsys'])
         print("Datos validos")
         respuesta = update_movie_details(**payload)
-        raise bottle.HTTPError(201)
+        print(respuesta)
+        print("Almost done")
     except:
         print("Datos invalidos")
-        raise bottle.HTTPError(400)
-    raise bottle.HTTPError(500)
+        raise bottle.HTTPError(400, "Invalid data")
+    raise bottle.HTTPError(201, "Movie data has been updated")
 
 ## Add a review to a certain movie
 # Example curl:

@@ -31,15 +31,14 @@ app.mount("/movie", routes.movie_info.app)
 def root_index(*args, **kwargs):
     return dict(code=200)
 
-<<<<<<< HEAD
-=======
+
 @app.get("/hello")
 @app.get("/hello/<name>")
 def root_index(*args, name="Mike", **kwargs):
     return dict(code=200, hello="how-are-you") | {"from":name}
 
 
->>>>>>> 7c205d3b455c24d48a96b01fac200d858da39a52
+
 if __name__ == '__main__':
     error = False
     if (argv_len := len(sys.argv)) > 1:

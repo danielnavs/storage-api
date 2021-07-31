@@ -48,12 +48,27 @@ def get_movie_details(movie_id=None):
         ]
     print("Almost done perro")
 
-def update_movie_details(title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
-
-    #update = True
-    print("Desde modulo movie_info.py")
-    print(title, genre2, director, release_date, sinopsys)
+def update_movie_details(movie_id = None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
+    print("Desde Modulo store")
+    print(movie_id, title, genre2, director, release_date, sinopsys)
     print("Exito")
+
+    almacenable = {
+        "movie_id": movie_id,
+        "title": title,
+        "genre2": genre2,
+        "director": director,
+        "release_date": release_date,
+        "sinopsys": sinopsys,
+    }
+    nombre_de_archivo = f"{movie_id}-{title}.json"
+    datos = store_string(
+        "movie/movies",
+        nombre_de_archivo,
+        json.dumps(almacenable),
+        update=True
+    )
+    return datos
 
 def add_review(review_id = None, user_id = None, movie_id = None, movie_title = None, rate = None, comment = None):
 
