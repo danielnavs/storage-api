@@ -13,19 +13,14 @@ import routes.storage
 import routes.example
 import models.base
 import routes.movie_info
+from modules.bottles import BottleJson
 
-app = bottle.Bottle()
+app = BottleJson()
 
 app.mount("/auth", routes.auth.app)
 app.mount("/example", routes.example.app)
 app.mount("/storage", routes.storage.app)
-app.mount("/store", routes.movie_info.app)
 app.mount("/movie", routes.movie_info.app)
-#app.mount("/list", routes.movie_info.app)
-
-#app.mount("/<movie_id>", routes.movie_info.app)
-#app.mount("/<movie_id>/review", routes.movie_info.app)
-#app.mount("/<movie_id>/review/<review_id>", routes.movie_info.app)
 
 @app.get("/")
 def root_index(*args, **kwargs):

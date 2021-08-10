@@ -1,5 +1,7 @@
 import json
-from datetime import datetime
+import datetime as dt
+from os import environ
+from pathlib import Path
 from modules.storage import (
     store_string,
     store_bytes,
@@ -9,7 +11,7 @@ from modules.storage import (
 
 def add_movie(movie_id = None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
 
-    print("Desde Modulo store")
+    print("Desde Modulo add_movie")
     print(movie_id, title, genre2, director, release_date, sinopsys)
     print("Exito")
 
@@ -46,10 +48,10 @@ def get_movie_details(movie_id=None):
            for r in query_result["content"]
            if movie_id in r
         ]
-    print("Almost done perro")
+    print("Done")
 
 def update_movie_details(movie_id = None, title = None, genre2 = None, director = None, release_date = None, sinopsys = None):
-    print("Desde Modulo store")
+    print("Desde Modulo update_movie_details")
     print(movie_id, title, genre2, director, release_date, sinopsys)
     print("Exito")
 
@@ -102,7 +104,7 @@ def get_reviews_from_movie(movie_id = None, reviews = None):
            for r in query_result["content"]
            if movie_id in r
         ]
-    print("Done compita")
+    print("Done")
 
 
 def get_review_from_certain_movie(movie_id = None, review_id = None):
@@ -115,4 +117,13 @@ def get_review_from_certain_movie(movie_id = None, review_id = None):
            for r in query_result["content"]
            if movie_id in r
         ]
-    print("Done compita")
+    print("Done")
+
+def add_new_image(image_name=None, image_file=None):
+    filename = f"{image_name}.jpg"
+    store_bytes(
+        "movie/images",
+        filename,
+        image_file.read()
+    )
+    return f"movie/pictures/{filename}"

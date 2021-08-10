@@ -8,7 +8,8 @@ from modules.movie_info import (
     update_movie_details,
     get_reviews_from_movie,
     add_review,
-    get_review_from_certain_movie
+    get_review_from_certain_movie,
+    add_new_image
 )
 
 app = BottleJson()
@@ -132,3 +133,21 @@ def get_specific_review_from_movie(*args, movie_id=None,  review_id=None, **kwar
     except:
         raise bottle.HTTPError(500, "Error interno")
     raise bottle.HTTPError(200, respuesta)
+
+
+## Store a movie image
+## Curl example:
+##  curl http://localhost:8080/movie/image/new/001 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/shrek.jpg'
+@app.post("/image/new/<image_name>")
+def new_image(image_name):
+    try:
+        image_file = bottle.request.files.get("image_file")
+        payload = {
+            "image_name": image_name,
+            "image_file": image_file.file
+        }
+        respuesta = add_new_image(**payload)
+    except:
+        print("Invalid data")
+        raise bottle.HTTPError(400)
+    raise bottle.HTTPError(201, "The movie image has been uploaded succesfully")
