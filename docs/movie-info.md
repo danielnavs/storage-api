@@ -251,3 +251,22 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
  | Concepto                 | Commit Hash|
 | --------------------- | ----------- |
 |  Creacion y explicacion de mock-ups|   e1201c5529b6b655d48cf583eb92661f9b509f19
+
+# Casos de uso (ya tengo los curls, falta explicar mas y estructurar)
+
+- El usuario desea agregar una nueva pelicula
+Pendiente
+- El usuario desea consultar todas las peliculas almacenadas el sistema
+Pendiente
+- El usuario desea consultar los detalles de una pelicula en especifico
+Pendiente
+- El usuario desea actualizar los detalles de una pelicula
+Pendiente
+- El usuario desea agregar una resena a una pelicula
+Pendiente
+- El usuario desea consultar todas las resenas que ha recibido una pelicula
+Pendiente
+- El usuario desea consultar una resena en especico de una pelicula en particular.
+Pendiente
+- El usuario desea agregar una imagen de una pelicula.
+Pendiente
