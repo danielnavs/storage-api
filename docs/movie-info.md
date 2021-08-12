@@ -268,8 +268,12 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
  curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Despues de luchar contra un dragon que escupe fuego y al malvado Lord Farquaad para ganar la mano de la princesa Fiona, Shrek ahora se enfrenta a su mayor reto: los suegros."}'
  ```
 
- - Pendiente
-- El usuario desea consultar todas las peliculas almacenadas el sistema
+- El usuario desea consultar todas las peliculas almacenadas el sistema. Ejemplo de curl (metodo GET):
+
+```
+curl http://localhost:8080/movie/list -X GET
+```
+
 Pendiente
 - El usuario desea consultar los detalles de una pelicula en especifico
 Pendiente
