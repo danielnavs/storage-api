@@ -252,15 +252,20 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
 | --------------------- | ----------- |
 |  Creacion y explicacion de mock-ups|   e1201c5529b6b655d48cf583eb92661f9b509f19
 
-# Casos de uso (ya tengo los curls, falta explicar mas y estructurar)
+# Casos de uso
 
 - El usuario desea agregar una nueva pelicula.
- - Para ello, el usuario debe ingresar los campos requeridos para almacenar una pelicula. Los cuales son: id, titulo, genero, director, fecha de lanzamiento y sinopsis. Ejemplo de curl (metodo POST):
+  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una pelicula. Los cuales son: id, titulo, genero, director, fecha de lanzamiento y sinopsis. Ejemplo de curl (metodo POST):
  ```
  curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Shrek, Asno y la Princesa Fiona se enfrentan a toda una divertida serie de nuevas aventuras."}'
  ```
 
-- El usuario desea actualizar los detalles de una pelicula
+- El usuario desea actualizar los detalles de una pelicula. En especifico, se desea actualizar la sinopsis.
+  - Para actualizar los datos de una pelicula, es necesario ingresar los campos de la pelicula que ya han sido registrados anteriormente, con la diferencia de que la sinopsis sera reemplazada. Ejemplo de curl (metodo POST):
+  ```
+ curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Despues de luchar contra un dragon que escupe fuego y al malvado Lord Farquaad para ganar la mano de la princesa Fiona, Shrek ahora se enfrenta a su mayor reto: los suegros."}'
+  ```
+
  - Pendiente
 - El usuario desea consultar todas las peliculas almacenadas el sistema
 Pendiente
