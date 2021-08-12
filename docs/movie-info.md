@@ -254,13 +254,17 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
 
 # Casos de uso (ya tengo los curls, falta explicar mas y estructurar)
 
-- El usuario desea agregar una nueva pelicula
-Pendiente
+- El usuario desea agregar una nueva pelicula.
+ - Para ello, el usuario debe ingresar los campos requeridos para almacenar una pelicula. Los cuales son: id, titulo, genero, director, fecha de lanzamiento y sinopsis. Ejemplo de curl (metodo POST):
+ ```
+ curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Shrek, Asno y la Princesa Fiona se enfrentan a toda una divertida serie de nuevas aventuras."}'
+ ```
+
+- El usuario desea actualizar los detalles de una pelicula
+ - Pendiente
 - El usuario desea consultar todas las peliculas almacenadas el sistema
 Pendiente
 - El usuario desea consultar los detalles de una pelicula en especifico
-Pendiente
-- El usuario desea actualizar los detalles de una pelicula
 Pendiente
 - El usuario desea agregar una resena a una pelicula
 Pendiente
