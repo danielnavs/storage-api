@@ -296,7 +296,7 @@ curl http://localhost:8080/movie/M001/reviews -X GET
 ```
 
 - El usuario desea consultar una resena en especifico de una pelicula en particular.
-- Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar. Ejemplo de curl (metodo GET):
+  - Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar. Ejemplo de curl (metodo GET):
 
 ```
 curl http://localhost:8080/movie/M002/reviews/R002 -X GET
