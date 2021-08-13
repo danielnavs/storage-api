@@ -274,10 +274,20 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
 curl http://localhost:8080/movie/list -X GET
 ```
 
-Pendiente
-- El usuario desea consultar los detalles de una pelicula en especifico
-Pendiente
-- El usuario desea agregar una resena a una pelicula
+- El usuario desea consultar los detalles de una pelicula en especifico.
+  - En estos casos, se cuenta con el identificador unico de cada pelicula. El requerimiento es que el usuario especifique cual es el identificador (id) de la pelicula a consultar. Ejemplo de curl (metodo GET):
+
+```
+curl http://localhost:8080/movie/M001 -X GET
+```
+
+- El usuario desea agregar una resena a una pelicula.
+  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una resena. Los cuales son: id de la pelicula a la cual se le asignara la resena (movie_id), id de la resena, el id del usuario, titulo de la pelicula, puntuacion y comentario. Ejemplo de curl (metodo POST):
+
+```
+curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
+```
+
 Pendiente
 - El usuario desea consultar todas las resenas que ha recibido una pelicula
 Pendiente
