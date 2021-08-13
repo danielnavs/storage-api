@@ -288,10 +288,23 @@ curl http://localhost:8080/movie/M001 -X GET
 curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
 ```
 
-Pendiente
-- El usuario desea consultar todas las resenas que ha recibido una pelicula
-Pendiente
-- El usuario desea consultar una resena en especico de una pelicula en particular.
-Pendiente
+- El usuario desea consultar todas las resenas que ha recibido una pelicula.
+  - Para ello, el usuario debe especificar el id de la pelicula a consultar. Ejemplo de curl (metodo GET):
+
+```
+curl http://localhost:8080/movie/M001/reviews -X GET
+```
+
+- El usuario desea consultar una resena en especifico de una pelicula en particular.
+- Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar. Ejemplo de curl (metodo GET):
+
+```
+curl http://localhost:8080/movie/M002/reviews/R002 -X GET
+```
+
 - El usuario desea agregar una imagen de una pelicula.
-Pendiente
+  - Para el almacenamiento de imagenes, estas deben estar nombradas como el titulo de la pelicula. Ejemplo: Shrek2.jpg. De igual manera, es necesario especificar la ruta completa donde se encuentra la imagen. Ejemplo de curl (metodo POST):
+
+```
+curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/Shrek2.jpg'
+```
