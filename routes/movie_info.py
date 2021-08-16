@@ -51,7 +51,7 @@ def get_all_movies(*args, **kwargs):
         raise bottle.HTTPError(500, "Error interno")
     raise bottle.HTTPError(200, respuesta)
 
-## Get movie details
+## Route to get movie details
 ## Curl Example:
 # curl http://localhost:8080/movie/M001 -X GET
 @app.get("/<movie_id>")
@@ -62,9 +62,9 @@ def get_movie_per_id(*args, movie_id=None, **kwargs):
         raise bottle.HTTPError(400)
     raise bottle.HTTPError(200, respuesta)
 
-## Update movie details
+## Route to update movie details
 ## This works as a simple post. The store_string function
-## updates de info that was previously storaged.
+## updates de info that was previously stored.
 ## Curl example to update the Soy Leyenda movie information
 ## curl http://localhost:8080/movie/M002 -X POST -H /
 ##'Content-Type: application/json' -d /
@@ -90,7 +90,7 @@ def update_movie_data(*args, **kwargs):
         raise bottle.HTTPError(400, "Invalid data")
     raise bottle.HTTPError(201, "Movie data has been updated")
 
-## Add a review to a certain movie
+## Route to add a review to a certain movie
 # Example curl:
 # curl http://localhost:8080/movie/007/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "002","user_id": "001", "movie_id": "007", "movie_title": "Inception", "rate": "5", "comment": "goooood bro ngl"}'
 @app.post("/<movie_id>/review")
@@ -111,7 +111,7 @@ def bar(*args, **kwargs):
         raise bottle.HTTPError(400, "Invalid data")
     raise bottle.HTTPError(201, "Your review has been succesfully added")
 
-## Get all reviews from a movie
+## Route to get all reviews from a movie
 ## Curl example:
 # curl http://localhost:8080/movie/M001/reviews -X GET
 @app.get("/<movie_id>/reviews")
@@ -122,7 +122,7 @@ def get_all_reviews_from_movie(*args, movie_id=None, **kwargs):
         raise bottle.HTTPError(500, "Error interno")
     raise bottle.HTTPError(200, respuesta)
 
-## Get a certain review from a certain movie
+## Route to get a certain review from a certain movie
 ## Curl examples:
 # curl http://localhost:8080/movie/M002/reviews/R003 -X GET
 # curl http://localhost:8080/movie/M002/reviews/R002 -X GET
@@ -135,9 +135,9 @@ def get_specific_review_from_movie(*args, movie_id=None,  review_id=None, **kwar
     raise bottle.HTTPError(200, respuesta)
 
 
-## Store a movie image
-## Curl example:
-##  curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/shrek.jpg'
+## Route to store a movie image
+# Curl example:
+# curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/shrek.jpg'
 @app.post("/image/new/<image_name>")
 def new_image(image_name):
     try:

@@ -273,8 +273,8 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
  ```
 
 - El usuario desea consultar todas las peliculas almacenadas el sistema.
-- Si el usuario utiliza una ruta incorrecta, se le mostrara un error html 500 con el mensaje "Error interno".
-- Ejemplo de curl (metodo GET):
+  - Si el usuario utiliza una ruta incorrecta, se le mostrara un error html 500 con el mensaje "Error interno".
+  - Ejemplo de curl (metodo GET):
 
 ```
 curl http://localhost:8080/movie/list -X GET
@@ -289,26 +289,26 @@ curl http://localhost:8080/movie/list -X GET
 curl http://localhost:8080/movie/M001 -X GET
 ```
 
-- El usuario desea agregar una resena a una pelicula.
-  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una resena. Los cuales son: id de la pelicula a la cual se le asignara la resena (movie_id), id de la resena, el id del usuario, titulo de la pelicula, puntuacion y comentario.
+- El usuario desea agregar una reseña a una pelicula.
+  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una reseña. Los cuales son: id de la pelicula a la cual se le asignara la reseña (movie_id), id de la reseña, el id del usuario, titulo de la pelicula, puntuacion y comentario.
   - Si el usuario registra los datos incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
-  - Ejemplo de curl para agregar una resena (metodo POST):
+  - Ejemplo de curl para agregar una reseña (metodo POST):
 
 ```
 curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
 ```
 
-- El usuario desea consultar todas las resenas que ha recibido una pelicula.
+- El usuario desea consultar todas las reseñas que ha recibido una pelicula.
   - Para ello, el usuario debe especificar el id de la pelicula a consultar.
   - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
-  - Ejemplo de curl para una consuilta de resenas exitosa (metodo GET):
+  - Ejemplo de curl para una consuilta de reseñas exitosa (metodo GET):
 
 ```
 curl http://localhost:8080/movie/M001/reviews -X GET
 ```
 
-- El usuario desea consultar una resena en especifico de una pelicula en particular.
-  - Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar.
+- El usuario desea consultar una reseña en especifico de una pelicula en particular.
+  - Para ello, el usuario debe especificar el id de la pelicula y el id de la reseña a consultar.
   - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
   - Ejemplo de curl para una consulta exitosa (metodo GET):
 
