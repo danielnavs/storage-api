@@ -14,10 +14,10 @@ from modules.movie_info import (
 
 app = BottleJson()
 
+# Default route
 @app.get("/")
-    #Default route
 
-## Add a movie
+# Route to add a movie.
 # Curl Example:
 # curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "002","title": "Shrek3", "genre2": "Cartoon", "director": "elnava", "release_date": "1999-01-01", "sinopsys": "muylejanojaja"}'
 @app.post("/store")
@@ -40,8 +40,8 @@ def store(*args, **kwargs):
         raise bottle.HTTPError(400, "Invalid data")
     raise bottle.HTTPError(201, respuesta)
 
-## Get movies list
-## Curl example:
+# Route to get movies list
+# Curl example:
 # curl http://localhost:8080/movie/list -X GET
 @app.get("/list")
 def get_all_movies(*args, **kwargs):
@@ -53,7 +53,7 @@ def get_all_movies(*args, **kwargs):
 
 ## Get movie details
 ## Curl Example:
-# curl http://localhost:8080/movie/001 -X GET
+# curl http://localhost:8080/movie/M001 -X GET
 @app.get("/<movie_id>")
 def get_movie_per_id(*args, movie_id=None, **kwargs):
     try:
@@ -108,7 +108,7 @@ def bar(*args, **kwargs):
         respuesta = add_review(**payload)
     except:
         print("Datos invalidos")
-        raise bottle.HTTPError(400)
+        raise bottle.HTTPError(400, "Invalid data")
     raise bottle.HTTPError(201, "Your review has been succesfully added")
 
 ## Get all reviews from a movie
@@ -137,7 +137,7 @@ def get_specific_review_from_movie(*args, movie_id=None,  review_id=None, **kwar
 
 ## Store a movie image
 ## Curl example:
-##  curl http://localhost:8080/movie/image/new/001 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/shrek.jpg'
+##  curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/shrek.jpg'
 @app.post("/image/new/<image_name>")
 def new_image(image_name):
     try:

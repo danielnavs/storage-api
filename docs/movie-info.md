@@ -255,55 +255,71 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
 # Casos de uso
 
 - El usuario desea agregar una nueva pelicula.
-  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una pelicula. Los cuales son: id, titulo, genero, director, fecha de lanzamiento y sinopsis. Ejemplo de curl (metodo POST):
+  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una pelicula. Los cuales son: id, titulo, genero, director, fecha de lanzamiento y sinopsis.
+  - Si el usuario registra los datos incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
+  - Ejemplo de curl de un registro exitoso (metodo POST):
 
  ```
  curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Shrek, Asno y la Princesa Fiona se enfrentan a toda una divertida serie de nuevas aventuras."}'
  ```
 
 - El usuario desea actualizar los detalles de una pelicula. En especifico, se desea actualizar la sinopsis.
-  - Para actualizar los datos de una pelicula, es necesario ingresar los campos de la pelicula que ya han sido registrados anteriormente, con la diferencia de que la sinopsis sera reemplazada. Ejemplo de curl (metodo POST):
+  - Para actualizar los datos de una pelicula, es necesario ingresar los campos de la pelicula que ya han sido registrados anteriormente, con la diferencia de que la sinopsis sera reemplazada.
+  - Si el usuario registra los datos incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
+  - Ejemplo de curl para una actualizacion de pelicula (metodo POST):
 
  ```
  curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Despues de luchar contra un dragon que escupe fuego y al malvado Lord Farquaad para ganar la mano de la princesa Fiona, Shrek ahora se enfrenta a su mayor reto: los suegros."}'
  ```
 
-- El usuario desea consultar todas las peliculas almacenadas el sistema. Ejemplo de curl (metodo GET):
+- El usuario desea consultar todas las peliculas almacenadas el sistema.
+- Si el usuario utiliza una ruta incorrecta, se le mostrara un error html 500 con el mensaje "Error interno".
+- Ejemplo de curl (metodo GET):
 
 ```
 curl http://localhost:8080/movie/list -X GET
 ```
 
 - El usuario desea consultar los detalles de una pelicula en especifico.
-  - En estos casos, se cuenta con el identificador unico de cada pelicula. El requerimiento es que el usuario especifique cual es el identificador (id) de la pelicula a consultar. Ejemplo de curl (metodo GET):
+  - En estos casos, se cuenta con el identificador unico de cada pelicula. El requerimiento es que el usuario especifique cual es el identificador (id) de la pelicula a consultar.
+  - Si el usuario utiliza una ruta o un id incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
+  - Ejemplo de curl para una consulta de todas las peliculas (metodo GET):
 
 ```
 curl http://localhost:8080/movie/M001 -X GET
 ```
 
 - El usuario desea agregar una resena a una pelicula.
-  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una resena. Los cuales son: id de la pelicula a la cual se le asignara la resena (movie_id), id de la resena, el id del usuario, titulo de la pelicula, puntuacion y comentario. Ejemplo de curl (metodo POST):
+  - Para ello, el usuario debe ingresar los campos requeridos para almacenar una resena. Los cuales son: id de la pelicula a la cual se le asignara la resena (movie_id), id de la resena, el id del usuario, titulo de la pelicula, puntuacion y comentario.
+  - Si el usuario registra los datos incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
+  - Ejemplo de curl para agregar una resena (metodo POST):
 
 ```
 curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
 ```
 
 - El usuario desea consultar todas las resenas que ha recibido una pelicula.
-  - Para ello, el usuario debe especificar el id de la pelicula a consultar. Ejemplo de curl (metodo GET):
+  - Para ello, el usuario debe especificar el id de la pelicula a consultar.
+  - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
+  - Ejemplo de curl para una consuilta de resenas exitosa (metodo GET):
 
 ```
 curl http://localhost:8080/movie/M001/reviews -X GET
 ```
 
 - El usuario desea consultar una resena en especifico de una pelicula en particular.
-  - Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar. Ejemplo de curl (metodo GET):
+  - Para ello, el usuario debe especificar el id de la pelicula y el id de la resena a consultar.
+  - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
+  - Ejemplo de curl para una consulta exitosa (metodo GET):
 
 ```
 curl http://localhost:8080/movie/M002/reviews/R002 -X GET
 ```
 
 - El usuario desea agregar una imagen de una pelicula.
-  - Para el almacenamiento de imagenes, estas deben estar nombradas como el titulo de la pelicula. Ejemplo: Shrek2.jpg. De igual manera, es necesario especificar la ruta completa donde se encuentra la imagen. Ejemplo de curl (metodo POST):
+  - Para el almacenamiento de imagenes, estas deben estar nombradas como el titulo de la pelicula. Ejemplo: Shrek2.jpg. De igual manera, es necesario especificar la ruta completa donde se encuentra la imagen.
+  - Si el usuario ingresa la ruta del archivo o el nombre de la imagen incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
+  - Ejemplo de curl para subir una imagen exitosamente (metodo POST):
 
 ```
 curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/Shrek2.jpg'
