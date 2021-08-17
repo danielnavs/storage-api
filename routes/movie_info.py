@@ -19,7 +19,7 @@ app = BottleJson()
 
 # Route to add a movie.
 # Curl Example:
-# curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "002","title": "Shrek3", "genre2": "Cartoon", "director": "elnava", "release_date": "1999-01-01", "sinopsys": "muylejanojaja"}'
+# curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M003","title": "Hulk", "genre2": "Accion", "director": "Louis Leterrier", "release_date": "2008-06-08", "sinopsys": "Bruce Banner recorre el mundo en busca de un antidoto para librarse de su alter ego."}'
 @app.post("/store")
 def store(*args, **kwargs):
     payload = bottle.request.json
@@ -92,7 +92,7 @@ def update_movie_data(*args, **kwargs):
 
 ## Route to add a review to a certain movie
 # Example curl:
-# curl http://localhost:8080/movie/007/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "002","user_id": "001", "movie_id": "007", "movie_title": "Inception", "rate": "5", "comment": "goooood bro ngl"}'
+# curl http://localhost:8080/movie/007/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R004","user_id": "001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "goooood bro ngl"}'
 @app.post("/<movie_id>/review")
 def bar(*args, **kwargs):
     payload = bottle.request.json

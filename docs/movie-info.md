@@ -324,3 +324,19 @@ curl http://localhost:8080/movie/M002/reviews/R002 -X GET
 ```
 curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/Shrek2.jpg'
 ```
+
+# Planeacion del desarrollo del frontend
+
+El desarrollo del frontend requiere de un análisis profundo en cuanto a las funcionalidades del proyecto. Todas y cada una de las funcionalidades deben de ir acorde con lo establecido en el backend. La base de dicha interfaz será estructurada en un archivo html, que, en conjunto con funciones de JavaScript y CSS se le dará vida al proyecto y el propósito es que la interfaz sea amigable para el usuario.
+
+Se integrará una página principal, la cual contara con sub paginas donde se mostrarán las siguientes opciones con las que el usuario puede interactuar:
+- Agregar pelicula.
+- Consultar todas las peliculas.
+- Ver detalles de pelicula.
+  - Consultar todas las reseñas de una peliculas.
+  - Consultar una reseña en especifico sobre una pelicula.
+  - Agregar reseña.
+  - Actualizar detalles de pelicula.
+  - Subir una imagen sobre una pelicula.
+
+Es importante tener en cuenta las necesidades o peticiones del usuario ya que en base a esto se puede mejorar el sistema al agregar nuevas funcionalidades y solucionar posibles fallos de funcionamiento.
