@@ -37,7 +37,7 @@ Las consultas de datos sirven para obtener detalles de la informacion ya recabad
   - Todas
 - Lista de reseñas
   - Por ID
-   - Todas
+  - Todas
 
 ### Operaciones de datos
 El usuario puede interactuar con los datos del servidor de diferentes maneras:
@@ -52,13 +52,14 @@ A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 
 | Path                  | Descripción |
 | --------------------- | ----------- |
-|  /movie-info/add|   Agregar una pelicula
-|  /movie-info/list         |   Listar peliculas    
-|  /movie-info/<movie_id>         |   Obtener informacion de pelicula por id
-|  /movie-info/<movie_id>          |  Actualizar informacion de pelicula por id
-|  /movie-info/<movie_id>/review |   Listar reseñas de pelicula por id de pelicula        
-|  /movie-info/<movie_id>/review   | Agregar una reseña a una pelicula con id    |
-|  /movie-info/<movie_id>/review/<review_id>|   Obtener detalle de reseña con id para pelicula con id
+|  /movie/store|   Agregar una pelicula
+|  /movie/list         |   Listar peliculas    
+|  /movie/movie_id        |   Obtener informacion de pelicula por id
+|  /movie/movie_id        |  Actualizar informacion de pelicula por id
+|  /movie/movie_id/reviews |   Listar reseñas de pelicula por id de pelicula        
+|  /movie/movie_id/review   | Agregar una reseña a una pelicula con id    |
+|  /movie/movie_id/reviews/review_id|   Obtener detalle de reseña con id para pelicula con id
+|  /movie/image/new/image_name  | Agregar imagen de pelicula
 
 ### Ejemplos de mensajes HTTP que aceptara y emitira el servidor
 
@@ -74,13 +75,13 @@ A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 ```
 - Respuesta de registro de pelicula exitoso
 ```
-{ "id": "P001" }
+{ "code": "201", "message": "Movie succesfully added" }
 ```
 -  Mensaje de fallo
 ```
 {
-   "code": "500",
-   "message": "An error has occurred"
+   "code": "400",
+   "message": "Invalid data"
 }
 ```
 
@@ -95,62 +96,61 @@ A continuacion, se presentan las rutas HTTP y su respectiva descripcion.
 ```
 - Respuesta de registro de reseña exitoso
 ```
-{ "id": "R001" }
+{ "code": "201", "message": "Your review has been succesfully added" }
 ```
 -  Mensaje de fallo
 ```
 {
-   "code": "500",
-   "message": "An error has occurred"
+   "code": "400",
+   "message": "Invalid data"
 }
 ```
 ### Ejemplos de interacciones con el servidor
+
 ```
-POST /movie-info/add
+POST /movie/store
 ```
 - Recibe una estructura de registro de pelicula.
 - 201, registrar una pelicula regresa estructura de id para la nueva pelicula.
 - D.O.M, regresa mensaje de fallo.
 
 ```
-GET /movie-info/list
+GET /movie/list
 ```
 - 200, regresa una lista de peliculas.
 - D.O.M, regresa mensaje de fallo en formato json.
-- curl http://localhost:8080/movie-info/json-X GET -H "Content-Type: application/json" --data '{​​​​​​​"movie_id": "All"}​​​​​​​'
+- curl http://localhost:8080/movie/list -X GET
 
 ```
-GET /movie-info/<movie_id>
+GET /movie/<movie_id>
 ```
 - 200, regresa datos de pelicula con id.
 - D.O.M, regresa mensaje de fallo en formato json.
-- curl http://localhost:8080/movie-info/<movie_id>
--X GET -H "Content-Type: application/json" --data
-'{​​​​​​​"movie_id": "P001"}
+- curl http://localhost:8080/movie/M001 -X GET
 
 ```
-POST /movie-info/<movie_id>
+POST /movie/<movie_id>
 ```
 - 201, actualizar informacion de una pelicula.
 - D.O.M, regresa mensaje de fallo.
 
 ```
-GET /movie-info/<movie_id>/review
+GET /movie/<movie_id>/review
 ```
 - 200, regresa reseñas de pelicula
 - D.O.M, regresa mensaje de fallo.
-- curl [http://localhost:8080/movie-info/<movie_id>/review] -X GET -H "Content-Type: application/json" --data '{​​​​​​​"movie_id": "P001", "review": "all"}​​​​​​​'
+- curl http://localhost:8080/movie/M001/reviews -X GET
 ```
-POST /movie-info/<movie_id>/review
+POST /movie/<movie_id>/review
 ```
 - 201, agregar una reseña a una pelicula.
 - D.O.M, regresa mensaje de fallo.
 ```
-GET /movie-info/<movie_id>/review/<review_id>
+GET /movie/<movie_id>/reviews/<review_id>
 ```
 - 200, regresa una reseña en especifico, de una pelicula.
 - D.O.M, regresa mensaje de fallo.
-- curl [http://localhost:8080/movie-info/<movie_id>/review] -X GET -H "Content-Type: application/json" --data '{​​​​​​​"movie_id": "P001", "review_id": "R001"}​​​​​​​'
+- curl http://localhost:8080/movie/M002/reviews/R002 -X GET
 
 ### Autenticacion y autorizacion de usuarios
 Los usuarios estan autorizados a consultar y leer toda la informacion respecto a las peliculas y reseñas ajenas. Sin embargo, no esta permitido que las editen.
@@ -238,11 +238,11 @@ Al finalizar el proyecto se realizaran pruebas para verificar el correcto funcio
 
 La imagen **docs/assets/movie-info-0001-review_page.png** muestra un formulario donde el usuario puede registrar una reseña en la pelicula de su eleccion. Se le solicita una calificacion y un comentario respecto a la pelicula. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
-![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0002-add_movie_page.PNG)
+![Login](./assets/movie-info-0002-add_movie_page.PNG)
 
 La imagen **docs/assets/movie-info-0002-add_movie_page.png** muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
 
-![Login](https://github.com/danielnavs/storage-api/blob/master/docs/assets/movie-info-0003-movies_list.PNG)
+![Login](assets/movie-info-0003-movies_list.PNG)
 
 La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas las peliculas existentes seguido de dos opciones:
 - Ver informacion. Proporciona la informacion de cada pelicula, independientemente.
@@ -276,45 +276,45 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Si el usuario utiliza una ruta incorrecta, se le mostrara un error html 500 con el mensaje "Error interno".
   - Ejemplo de curl (metodo GET):
 
-```
-curl http://localhost:8080/movie/list -X GET
-```
+  ```
+  curl http://localhost:8080/movie/list -X GET
+  ```
 
 - El usuario desea consultar los detalles de una pelicula en especifico.
   - En estos casos, se cuenta con el identificador unico de cada pelicula. El requerimiento es que el usuario especifique cual es el identificador (id) de la pelicula a consultar.
   - Si el usuario utiliza una ruta o un id incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
   - Ejemplo de curl para una consulta de todas las peliculas (metodo GET):
 
-```
-curl http://localhost:8080/movie/M001 -X GET
-```
+  ```
+  curl http://localhost:8080/movie/M001 -X GET
+  ```
 
 - El usuario desea agregar una reseña a una pelicula.
   - Para ello, el usuario debe ingresar los campos requeridos para almacenar una reseña. Los cuales son: id de la pelicula a la cual se le asignara la reseña (movie_id), id de la reseña, el id del usuario, titulo de la pelicula, puntuacion y comentario.
   - Si el usuario registra los datos incorrectamente, se le mostrara un error html 400 con el mensaje "Invalid data".
   - Ejemplo de curl para agregar una reseña (metodo POST):
 
-```
-curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
-```
+  ```
+  curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
+  ```
 
 - El usuario desea consultar todas las reseñas que ha recibido una pelicula.
   - Para ello, el usuario debe especificar el id de la pelicula a consultar.
   - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
   - Ejemplo de curl para una consuilta de reseñas exitosa (metodo GET):
 
-```
-curl http://localhost:8080/movie/M001/reviews -X GET
-```
+  ```
+  curl http://localhost:8080/movie/M001/reviews -X GET
+  ```
 
 - El usuario desea consultar una reseña en especifico de una pelicula en particular.
   - Para ello, el usuario debe especificar el id de la pelicula y el id de la reseña a consultar.
   - Si el usuario utiliza una ruta o un ID incorrecto (o inexistente), se le mostrara un error html 500 con el mensaje "Error interno".
   - Ejemplo de curl para una consulta exitosa (metodo GET):
 
-```
-curl http://localhost:8080/movie/M002/reviews/R002 -X GET
-```
+  ```
+  curl http://localhost:8080/movie/M002/reviews/R002 -X GET
+  ```
 
 - El usuario desea agregar una imagen de una pelicula.
   - Para el almacenamiento de imagenes, estas deben estar nombradas como el titulo de la pelicula. Ejemplo: Shrek2.jpg. De igual manera, es necesario especificar la ruta completa donde se encuentra la imagen.
@@ -330,13 +330,29 @@ curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: mult
 El desarrollo del frontend requiere de un análisis profundo en cuanto a las funcionalidades del proyecto. Todas y cada una de las funcionalidades deben de ir acorde con lo establecido en el backend. La base de dicha interfaz será estructurada en un archivo html, que, en conjunto con funciones de JavaScript y CSS se le dará vida al proyecto y el propósito es que la interfaz sea amigable para el usuario.
 
 Se integrará una página principal, la cual contara con sub paginas donde se mostrarán las siguientes opciones con las que el usuario puede interactuar:
-- Agregar pelicula.
-- Consultar todas las peliculas.
-- Ver detalles de pelicula.
-  - Consultar todas las reseñas de una peliculas.
-  - Consultar una reseña en especifico sobre una pelicula.
-  - Agregar reseña.
-  - Actualizar detalles de pelicula.
-  - Subir una imagen sobre una pelicula.
+
+- **Consultar todas las peliculas.**
+
+![Login](assets/movie-info-0003-movies_list.PNG)
+
+La imagen muestra la lista de todas las peliculas existentes seguido de dos opciones:
+- **Ver informacion de pelicula.** Proporciona los detalles de cada pelicula, independientemente.
+  - **Consultar todas las reseñas de una peliculas.** Una vez el usuario ha entrado a la pagina de la pelicula en cuestion, puede ver todas las reseñas que dicha pelicula ha recibbido.
+  - **Consultar una reseña en especifico sobre una pelicula.** Una vez el usuario ha entrado a la pagina de la pelicula en cuestion, puede consultar una reseña en especifico sobre la pelicula.
+- **Actualizar datos de pelicula.** Es posible actualizar los detalles de una pelicula.
+- **Agregar reseña.** Funcion para agregar una reseña a una pelicula.
+
+![Login](https://github.com/danielnavs/storage-api/raw/master/docs/assets/movie-info-0001-review_page.PNG)
+
+La imagen  muestra un formulario donde el usuario puede registrar una reseña en la pelicula de su eleccion. Se le solicita una calificacion y un comentario respecto a la pelicula. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
+
+- **Agregar pelicula.**
+
+![Login](./assets/movie-info-0002-add_movie_page.PNG)
+
+La imagen muestra un formulario para agregar una nueva pelicula al sistema. Se despliegan diferentes campos los cuales se le asignaran como atributos a la pelicula en cuestion. Al final se encuentra un boton de submit, el cual sirve para guardar los cambios.
+
+Entre otras funcionalidades, se encuentran la siguiente:
+- **Subir una imagen de una pelicula.**
 
 Es importante tener en cuenta las necesidades o peticiones del usuario ya que en base a esto se puede mejorar el sistema al agregar nuevas funcionalidades y solucionar posibles fallos de funcionamiento.
