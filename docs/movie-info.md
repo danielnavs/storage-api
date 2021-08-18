@@ -260,7 +260,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl de un registro exitoso (metodo POST):
 
  ```
- curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Shrek, Asno y la Princesa Fiona se enfrentan a toda una divertida serie de nuevas aventuras."}'
+ curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M003","title": "Hulk", "genre2": "Accion", "director": "Louis Leterrier", "release_date": "2008-06-08", "sinopsys": "Bruce Banner recorre el mundo en busca de un antidoto para librarse de su alter ego."}'
  ```
 
 - El usuario desea actualizar los detalles de una pelicula. En especifico, se desea actualizar la sinopsis.
@@ -269,7 +269,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl para una actualizacion de pelicula (metodo POST):
 
  ```
- curl http://localhost:8080/movie/store -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M001","title": "Shrek 2", "genre2": "Cartoon", "director": "Conrad Vernon", "release_date": "2004-06-16", "sinopsys": "Despues de luchar contra un dragon que escupe fuego y al malvado Lord Farquaad para ganar la mano de la princesa Fiona, Shrek ahora se enfrenta a su mayor reto: los suegros."}'
+  curl http://localhost:8080/movie/M003 -X POST -H 'Content-Type: application/json' -d '{"movie_id": "M003","title": "Hulk", "genre2": "Accion", "director": "Louis Leterrier", "release_date": "2008-06-08", "sinopsys": "Bruce Banner recorre el mundo en busca de un antidoto."}'
  ```
 
 - El usuario desea consultar todas las peliculas almacenadas el sistema.
@@ -286,7 +286,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl para una consulta de todas las peliculas (metodo GET):
 
   ```
-  curl http://localhost:8080/movie/M001 -X GET
+  curl http://localhost:8080/movie/M003 -X GET
   ```
 
 - El usuario desea agregar una reseña a una pelicula.
@@ -295,7 +295,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl para agregar una reseña (metodo POST):
 
   ```
-  curl http://localhost:8080/movie/M001/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R001","user_id": "U001", "movie_id": "M001", "movie_title": "Shrek 2", "rate": "5", "comment": "Muy buena pelicula. Apta para todo publico y entretenida."}'
+  curl http://localhost:8080/movie/M003/review -X POST -H 'Content-Type: application/json' -d '{"review_id": "R004","user_id": "U001", "movie_id": "M003", "movie_title": "Hulk", "rate": "5", "comment": "Muy buena pelicula. Entretenida."}'
   ```
 
 - El usuario desea consultar todas las reseñas que ha recibido una pelicula.
@@ -304,7 +304,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl para una consuilta de reseñas exitosa (metodo GET):
 
   ```
-  curl http://localhost:8080/movie/M001/reviews -X GET
+  curl http://localhost:8080/movie/M003/reviews -X GET
   ```
 
 - El usuario desea consultar una reseña en especifico de una pelicula en particular.
@@ -322,7 +322,7 @@ La imagen **docs/assets/movie-info-0003-movies_list** muestra la lista de todas 
   - Ejemplo de curl para subir una imagen exitosamente (metodo POST):
 
 ```
-curl http://localhost:8080/movie/image/new/Shrek2 -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/Shrek2.jpg'
+curl http://localhost:8080/movie/image/new/Hulk -X POST -H 'Content-Type: multipart/form-data' -F 'image_file=@/C/Users/dnavarro/images/Hulk.jpg'
 ```
 
 # Planeacion del desarrollo del frontend
